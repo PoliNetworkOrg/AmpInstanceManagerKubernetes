@@ -24,4 +24,4 @@ RUN useradd -u 7999 -m amp
 RUN chown -R amp .
 USER amp
 
-ENTRYPOINT /amp/ampinstmgr -quick $USERNAME $PASSWORD
+ENTRYPOINT /opt/cubecoders/amp/ampinstmgr -quick $USERNAME $PASSWORD
