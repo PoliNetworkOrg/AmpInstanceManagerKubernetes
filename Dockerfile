@@ -26,4 +26,6 @@ USER amp
 
 RUN /opt/cubecoders/amp/ampinstmgr CreateInstance $MODULE ADS01 $IPBINDING $PORT $USERNAME $PASSWORD $LICENCE
 
-CMD ["/opt/cubecoders/amp/ampinstmgr", "AttachInstance", "ADS01"]
+COPY entrypoint.sh /amp/entrypoint.sh
+
+ENTRYPOINT ["/bin/bash", "/amp/entrypoint.sh"]
