@@ -22,6 +22,5 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
-          context: PoliNetworkBot_CSharp/
           push: true
-          tags: polinetwork/AmpInstanceManagerKubernetes:${{ github.sha }}
+          tags: polinetwork/amp_instance_mgr_kubernetes:${{ github.sha }}
