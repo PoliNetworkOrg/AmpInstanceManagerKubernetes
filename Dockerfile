@@ -15,9 +15,6 @@ RUN apt-get update && \
 
 WORKDIR /amp
 
-RUN iptables -A INPUT -p tcp -m tcp --dport 8080 -j ACCEPT && \
-    iptables-save > /etc/iptables/rules.v4
-
 # Change executer to non user
 RUN useradd -u 7999 -m amp
 RUN chown -R amp .
