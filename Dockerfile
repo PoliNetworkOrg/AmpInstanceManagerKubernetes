@@ -24,6 +24,6 @@ RUN useradd -u 7999 -m amp
 RUN chown -R amp .
 USER amp
 
-RUN ampinstmgr quickstart
+RUN ampinstmgr -quick $USERNAME $PASSWORD
 
 ENTRYPOINT ["/opt/entrypoint/main.sh"]
