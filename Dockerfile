@@ -14,13 +14,14 @@ RUN apt-get update && \
     apt-get install -y tmux socat unzip git wget
 
 WORKDIR /amp
+
+RUN iptables -A INPUT -p tcp -m tcp --dport 8080 -j ACCEPT &&
+    iptables-save > /etc/iptables/rules.v4
+
 # Change executer to non user
 RUN useradd -u 7999 -m amp
 RUN chown -R amp .
 USER amp
-
-iptables -A INPUT -p tcp -m tcp --dport 8080 -j ACCEPT
-iptables-save > /etc/iptables/rules.v4
 
 RUN wget -q https://repo.cubecoders.com/ampinstmgr-latest.tgz &&
     tar -xf ampinstmgr-latest.tgz -C / &&
