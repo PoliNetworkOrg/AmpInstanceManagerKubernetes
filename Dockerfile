@@ -15,11 +15,6 @@ RUN apt-get update && \
 
 WORKDIR /amp
 
-# Change executer to non user
-RUN useradd -u 7999 -m amp
-RUN chown -R amp .
-USER amp
-
 RUN wget -q https://repo.cubecoders.com/ampinstmgr-latest.tgz && \
     tar -xf ampinstmgr-latest.tgz -C / && \
     rm ampinstmgr-latest.tgz && \
@@ -31,6 +26,11 @@ RUN wget -q https://repo.cubecoders.com/ampinstmgr-latest.tgz && \
     systemctl start ampfirewall.timer && \
     systemctl start amptasks.timer
     
+# Change executer to non user
+RUN useradd -u 7999 -m amp
+RUN chown -R amp .
+USER amp
+
 RUN ampinstmgr quickstart
 
 ENTRYPOINT ["/opt/entrypoint/main.sh"]
