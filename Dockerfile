@@ -26,4 +26,4 @@ USER amp
 
 RUN /opt/cubecoders/amp/ampinstmgr CreateInstance $MODULE ADS01 $IPBINDING $PORT $USERNAME $PASSWORD $LICENCE
 
-CMD ["/opt/cubecoders/amp/ampinstmgr", "StartInstance", "ADS01"]
+CMD ["/opt/cubecoders/amp/ampinstmgr", "AttachInstance", "ADS01"]
