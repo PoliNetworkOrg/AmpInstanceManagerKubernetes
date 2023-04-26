@@ -23,16 +23,16 @@ RUN useradd -u 7999 -m amp
 RUN chown -R amp .
 USER amp
 
-RUN wget -q https://repo.cubecoders.com/ampinstmgr-latest.tgz &&
-    tar -xf ampinstmgr-latest.tgz -C / &&
-    rm ampinstmgr-latest.tgz &&
-    systemctl enable ampinstmgr.service &&
-    systemctl enable ampfirewall.service &&
-    systemctl enable ampfirewall.timer &&
-    systemctl enable amptasks.service &&
-    systemctl enable amptasks.timer &&
-    systemctl start ampfirewall.timer &&
-    systemctl start amptasks.timer &&
+RUN wget -q https://repo.cubecoders.com/ampinstmgr-latest.tgz && \
+    tar -xf ampinstmgr-latest.tgz -C / && \
+    rm ampinstmgr-latest.tgz && \
+    systemctl enable ampinstmgr.service && \
+    systemctl enable ampfirewall.service && \
+    systemctl enable ampfirewall.timer && \
+    systemctl enable amptasks.service && \
+    systemctl enable amptasks.timer && \
+    systemctl start ampfirewall.timer && \
+    systemctl start amptasks.timer
     
 RUN ampinstmgr quickstart
 
