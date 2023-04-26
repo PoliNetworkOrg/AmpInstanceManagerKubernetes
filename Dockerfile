@@ -11,25 +11,28 @@ ENV MODULE=ADS
 ENV IPBINDING=0.0.0.0
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-    software-properties-common \
-    dirmngr \
-    apt-transport-https && \
-    # Add CubeCoders repository and key
-    apt-key adv --fetch-keys http://repo.cubecoders.com/archive.key && \
-    apt-add-repository "deb http://repo.cubecoders.com/ debian/" && \
-    apt-get update && \
-    # Just download (don't actually install) ampinstmgr
-    apt-get install -y --no-install-recommends --download-only ampinstmgr && \
-    # Extract ampinstmgr from downloaded package
-    mkdir -p /tmp/ampinstmgr && \
-    dpkg-deb -x /var/cache/apt/archives/ampinstmgr_*.deb /tmp/ampinstmgr && \
-    mv /tmp/ampinstmgr/opt/cubecoders/amp/ampinstmgr /usr/local/bin/ampinstmgr && \
-    apt-get -y clean && \
-    apt-get -y autoremove --purge && \
-    rm -rf \
-    /tmp/* \
-    /var/lib/apt/lists/* \
-    /var/tmp/*
+    apt-get install -y tmux socat unzip git wget
+
+WORKDIR /amp
+# Change executer to non user
+RUN useradd -u 7999 -m amp
+RUN chown -R amp .
+USER amp
+
+iptables -A INPUT -p tcp -m tcp --dport 8080 -j ACCEPT
+iptables-save > /etc/iptables/rules.v4
+
+RUN wget -q https://repo.cubecoders.com/ampinstmgr-latest.tgz &&
+    tar -xf ampinstmgr-latest.tgz -C / &&
+    rm ampinstmgr-latest.tgz &&
+    systemctl enable ampinstmgr.service &&
+    systemctl enable ampfirewall.service &&
+    systemctl enable ampfirewall.timer &&
+    systemctl enable amptasks.service &&
+    systemctl enable amptasks.timer &&
+    systemctl start ampfirewall.timer &&
+    systemctl start amptasks.timer &&
     
+RUN ampinstmgr quickstart
+
 ENTRYPOINT ["/opt/entrypoint/main.sh"]
