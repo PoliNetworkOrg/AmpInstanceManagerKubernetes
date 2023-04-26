@@ -24,4 +24,6 @@ RUN useradd -u 7999 -m amp
 RUN chown -R amp .
 USER amp
 
-ENTRYPOINT /opt/cubecoders/amp/ampinstmgr --StartAllInstances
+RUN /opt/cubecoders/amp/ampinstmgr CreateInstance $MODULE ADS01 $IPBINDING $PORT $USERNAME $PASSWORD $LICENCE
+
+CMD ["/opt/cubecoders/amp/ampinstmgr", "StartInstance", "ADS01"]
