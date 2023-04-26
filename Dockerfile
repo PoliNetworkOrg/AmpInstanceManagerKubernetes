@@ -24,4 +24,4 @@ RUN useradd -u 7999 -m amp
 RUN chown -R amp .
 USER amp
 
-ENTRYPOINT ampinstmgr -quick $USERNAME $PASSWORD
+ENTRYPOINT /amp/ampinstmgr -quick $USERNAME $PASSWORD
