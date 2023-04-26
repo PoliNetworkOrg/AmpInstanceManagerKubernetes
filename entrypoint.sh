@@ -6,10 +6,8 @@
 # Start the server in the background
 /opt/cubecoders/amp/ampinstmgr StartInstance ADS01
 
-# Wait for the log file to be created
-while [ ! -f /home/amp/.ampdata/instances/ADS01/AMP_Logs/log.txt ]; do
-  sleep 1
+# Continuously view the instance output to keep the container running
+while true; do
+  /opt/cubecoders/amp/ampinstmgr View ADS01
+  sleep 10
 done
-
-# Tail the instance log file to keep the container running
-exec tail -f /home/amp/.ampdata/instances/ADS01/AMP_Logs/log.txt
