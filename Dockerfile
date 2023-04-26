@@ -18,7 +18,6 @@ WORKDIR /amp
 RUN wget -q https://repo.cubecoders.com/ampinstmgr-latest.tgz
 RUN tar -xf ampinstmgr-latest.tgz -C /
 RUN rm ampinstmgr-latest.tgz
-RUN systemctl enable ampinstmgr.service && systemctl enable ampfirewall.service && systemctl enable ampfirewall.timer && systemctl enable amptasks.service && systemctl enable amptasks.timer && systemctl start ampfirewall.timer && systemctl start amptasks.timer
     
 # Change executer to non user
 RUN useradd -u 7999 -m amp
