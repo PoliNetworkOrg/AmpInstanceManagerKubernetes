@@ -10,6 +10,8 @@ ENV LICENCE=notset
 ENV MODULE=ADS
 ENV IPBINDING=0.0.0.0
 
+ARG DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get update && \
     apt-get install -y tmux socat unzip git wget curl
 
