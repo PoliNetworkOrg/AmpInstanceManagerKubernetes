@@ -6,7 +6,6 @@ ENV TZ=Etc/UTC
 ENV PORT=8080
 ENV USERNAME=admin
 ENV PASSWORD=password
-ENV LICENCE=notset
 ENV MODULE=ADS
 ENV IPBINDING=0.0.0.0
 
@@ -43,7 +42,7 @@ RUN wget -q https://repo.cubecoders.com/ampinstmgr-latest.tgz
 RUN tar -xf ampinstmgr-latest.tgz -C /
 RUN rm ampinstmgr-latest.tgz
 
-RUN /opt/cubecoders/amp/ampinstmgr --CreateInstance $MODULE ADS01 $IPBINDING $PORT $USERNAME $PASSWORD $LICENCE
+RUN /opt/cubecoders/amp/ampinstmgr --CreateInstance $MODULE ADS01 $IPBINDING $PORT $USERNAME $PASSWORD 
 
 # Change executer to non user
 RUN useradd -u 7999 -m amp
