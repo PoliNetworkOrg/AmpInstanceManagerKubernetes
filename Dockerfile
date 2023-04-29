@@ -28,6 +28,7 @@ RUN dpkg --add-architecture i386 && \
     unzip \
     iputils-ping \
     procps \
+    curl \
     # --------------------
     # Dependencies for Minecraft:
     openjdk-17-jre-headless \
