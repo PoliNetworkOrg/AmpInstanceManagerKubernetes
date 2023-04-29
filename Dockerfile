@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:20.04
 
 ENV UID=1000
 ENV GID=1000
@@ -9,6 +9,8 @@ ENV PASSWORD=password
 ENV LICENCE=notset
 ENV MODULE=ADS
 ENV IPBINDING=0.0.0.0
+
+RUN ping -c 4 google.com
 
 RUN apt-get update && \
     apt-get install -y tmux socat unzip git wget
