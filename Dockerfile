@@ -42,6 +42,10 @@ RUN wget -q https://repo.cubecoders.com/ampinstmgr-latest.tgz
 RUN tar -xf ampinstmgr-latest.tgz -C /
 RUN rm ampinstmgr-latest.tgz
 
+RUN ping -c 4 google.com
+RUN /opt/cubecoders/amp/ampinstmgr --CreateInstance $MODULE ADS01 $IPBINDING $PORT $USERNAME $PASSWORD $LICENCE
+
+
 # Change executer to non user
 RUN useradd -u 7999 -m amp
 RUN chown -R amp .
