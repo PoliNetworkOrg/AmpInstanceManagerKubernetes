@@ -13,7 +13,7 @@ ENV IPBINDING=0.0.0.0
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
-    apt-get install -y tmux socat unzip git wget curl ping
+    apt-get install -y tmux socat unzip git wget curl iputils-ping
 
 WORKDIR /amp
 
