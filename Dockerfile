@@ -32,15 +32,7 @@ RUN dpkg --add-architecture i386 && \
     # Dependencies for Minecraft:
     openjdk-17-jre-headless \
     openjdk-11-jre-headless \
-    openjdk-8-jre-headless \
-    # --------------------
-    && \
-    apt-get -y clean && \
-    apt-get -y autoremove --purge && \
-    rm -rf \
-    /tmp/* \
-    /var/lib/apt/lists/* \
-    /var/tmp/*
+    openjdk-8-jre-headless
 
 # Set Java default
 RUN update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
