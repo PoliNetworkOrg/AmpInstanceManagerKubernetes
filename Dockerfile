@@ -11,7 +11,7 @@ ENV MODULE=ADS
 ENV IPBINDING=0.0.0.0
 
 RUN apt-get update && \
-    apt-get install -y tmux socat unzip git wget iputils-ping
+    apt-get install -y tmux socat unzip git wget curl
 
 RUN curl google.com
 
