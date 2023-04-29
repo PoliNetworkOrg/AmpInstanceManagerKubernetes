@@ -48,13 +48,13 @@ RUN update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
 RUN wget -q https://repo.cubecoders.com/ampinstmgr-latest.tgz
 RUN tar -xf ampinstmgr-latest.tgz -C /
 RUN rm ampinstmgr-latest.tgz
-    
+
+COPY entrypoint.sh /amp/entrypoint.sh
+RUN chmod +x /amp/entrypoint.sh
+
 # Change executer to non user
 RUN useradd -u 7999 -m amp
 RUN chown -R amp .
 USER amp
-
-COPY entrypoint.sh /amp/entrypoint.sh
-RUN chmod +x /amp/entrypoint.sh
 
 ENTRYPOINT ["/bin/bash", "/amp/entrypoint.sh"]
