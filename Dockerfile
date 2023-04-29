@@ -63,8 +63,7 @@ done' > /usr/local/bin/ping_http
 # Make the script executable
 RUN chmod +x /usr/local/bin/ping_http
 
-# Create an alias for ping
-RUN alias ping=/usr/local/bin/ping_http
+RUN /opt/cubecoders/amp/ampinstmgr --CreateInstance $MODULE ADS01 $IPBINDING $PORT $USERNAME $PASSWORD $LICENCE
 
 # Change executer to non user
 RUN useradd -u 7999 -m amp
