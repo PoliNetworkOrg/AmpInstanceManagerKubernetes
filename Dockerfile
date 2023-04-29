@@ -13,7 +13,7 @@ ENV IPBINDING=0.0.0.0
 RUN apt-get update && \
     apt-get install -y tmux socat unzip git wget iputils-ping
 
-RUN ping -c 4 google.com
+RUN curl google.com
 
 WORKDIR /amp
 
