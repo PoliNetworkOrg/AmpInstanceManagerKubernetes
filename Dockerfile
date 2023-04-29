@@ -54,9 +54,7 @@ RUN useradd -u 7999 -m amp
 RUN chown -R amp .
 USER amp
 
-RUN /opt/cubecoders/amp/ampinstmgr --CreateInstance $MODULE ADS01 $IPBINDING $PORT $USERNAME $PASSWORD $LICENCE
-
-
 COPY entrypoint.sh /amp/entrypoint.sh
+RUN chmod +x /amp/entrypoint.sh
 
 ENTRYPOINT ["/bin/bash", "/amp/entrypoint.sh"]
