@@ -64,7 +64,7 @@ done' > /usr/local/bin/ping_http
 RUN chmod +x /usr/local/bin/ping_http
 
 # Create an alias for ping
-RUN alias ping=ping_http
+RUN alias ping=/usr/local/bin/ping_http
 
 # Change executer to non user
 RUN useradd -u 7999 -m amp
