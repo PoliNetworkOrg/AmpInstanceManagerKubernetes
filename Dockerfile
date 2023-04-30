@@ -47,6 +47,12 @@ RUN useradd -u 7999 -m amp
 RUN chown -R amp .
 USER amp
 
+# Set ownership and permissions for /home/amp/.ampdata
+RUN mkdir -p /home/amp/.ampdata && \
+    chown -R amp:amp /home/amp/.ampdata && \
+    chmod -R 755 /home/amp/.ampdata
+
+
 COPY entrypoint.sh /amp/entrypoint.sh
 
 ENTRYPOINT ["/bin/bash", "/amp/entrypoint.sh"]
