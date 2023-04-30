@@ -53,6 +53,6 @@ RUN mkdir -p /home/amp/.ampdata && \
 
 USER amp
 
-COPY entrypoint.sh /home/amp/entrypoint.sh
+COPY entrypoint.sh /amp/entrypoint.sh
 
-ENTRYPOINT ["/bin/bash", "/home/amp/entrypoint.sh"]
+ENTRYPOINT ["/bin/bash", "/amp/entrypoint.sh"]
