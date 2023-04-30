@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# Start the server in the background
-/opt/cubecoders/amp/ampinstmgr StartInstance ADS01
+/opt/cubecoders/amp/ampinstmgr -quick $USERNAME $PASSWORD 
 
 # Continuously view the instance output to keep the container running
 while true; do
