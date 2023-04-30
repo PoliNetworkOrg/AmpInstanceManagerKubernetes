@@ -14,7 +14,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get install -y tmux socat unzip git wget curl iputils-ping
 
-WORKDIR /amp
+WORKDIR /home/amp
 
 # Install AMP dependencies
 RUN ls -al /usr/local/bin/

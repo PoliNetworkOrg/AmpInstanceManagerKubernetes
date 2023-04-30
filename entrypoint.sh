@@ -1,5 +1,6 @@
 #!/bin/bash
 
+cd /home/amp/
 /opt/cubecoders/amp/ampinstmgr -quick $USERNAME $PASSWORD 
 
 # Continuously view the instance output to keep the container running
