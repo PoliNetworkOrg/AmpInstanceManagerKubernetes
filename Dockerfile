@@ -42,10 +42,15 @@ RUN wget -q https://repo.cubecoders.com/ampinstmgr-latest.tgz
 RUN tar -xf ampinstmgr-latest.tgz -C /
 RUN rm ampinstmgr-latest.tgz
 
-# Set ownership and permissions for /home/amp/.ampdata
-RUN mkdir -p /home/amp/.ampdata && \
-    chown -R amp:amp /home/amp/.ampdata && \
-    chmod -R 755 /home/amp/.ampdata
+# # Change executer to non user
+# RUN useradd -u 7999 -m amp
+# RUN chown -R amp .
+# USER amp
+
+# # Set ownership and permissions for /home/amp/.ampdata
+# RUN mkdir -p /home/amp/.ampdata && \
+#     chown -R amp:amp /home/amp/.ampdata && \
+#     chmod -R 755 /home/amp/.ampdata
 
 
 COPY entrypoint.sh /amp/entrypoint.sh
